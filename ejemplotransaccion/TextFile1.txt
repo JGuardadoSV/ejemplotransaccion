@@ -1,0 +1,19 @@
+﻿DECLARE @TranName VARCHAR(20);  
+SELECT @TranName = 'EjemploTransaccion';
+BEGIN TRANSACTION @TranName;  
+	Insert into Cuenta values ('Prueba',200)
+COMMIT TRANSACTION @TranName;
+
+-- ROLLBACK
+
+
+
+DECLARE @TranName VARCHAR(20);  
+SELECT @TranName = 'EjemploTransaccion';
+BEGIN TRANSACTION @TranName;  
+	Insert into Cuenta values ('Prueba X4',200)
+ROLLBACK TRANSACTION @TranName;
+
+
+
+Select top 5 * from cuenta order by idCuenta desc
