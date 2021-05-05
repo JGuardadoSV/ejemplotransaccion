@@ -24,18 +24,21 @@ namespace ejemplotransaccion
 
                 try
                 {
-                    command.CommandText ="Insert into Cuenta values ('Prueba 11',200)";
+                    command.CommandText ="Insert into Cuenta values ('Prueba 333',200)";
                     command.ExecuteNonQuery();
-                    command.CommandText = "Insert into Cuenta values ('Prueba 22',200)";
+                    command.CommandText = "Insert into Cuenta values ('Prueba 444',200)";
                     command.ExecuteNonQuery();
+                    command.CommandText = "Insert into Cuenta values ('Prueba 555',200,111111)"; // hará rollback porque generará un error
+                    command.ExecuteNonQuery();
+                    //command.CommandText = "Insert into Cuenta values ('Prueba 44',200,65656)";
+                    //command.ExecuteNonQuery();
                     // hacer Commit
                     sqlTran.Commit();
-                    Console.WriteLine("Registro insertados.");
+                    Console.WriteLine("Registros insertados.");
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
-
                     try
                     {
                         // hacer roll back .
@@ -43,7 +46,6 @@ namespace ejemplotransaccion
                     }
                     catch (Exception exRollback)
                     {
-                        
                         Console.WriteLine(exRollback.Message);
                     }
                 }
